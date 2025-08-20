@@ -1,0 +1,106 @@
+/* Footer.css */
+
+.footer {
+  background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3rem 0;
+  color: #e2e8f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  color: #e2e8f0;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-links a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.social-links a:nth-child(1):hover {
+  color: #ffffff;
+  background: #333;
+  border-color: #333;
+}
+
+.social-links a:nth-child(2):hover {
+  color: #ffffff;
+  background: #0077B5;
+  border-color: #0077B5;
+}
+
+.social-links a:nth-child(3):hover {
+  color: #ffffff;
+  background: #1DA1F2;
+  border-color: #1DA1F2;
+}
+
+.footer p {
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Animation for social icons */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.social-links a:hover {
+  animation: float 1.5s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0;
+  }
+  
+  .social-links {
+    gap: 1rem;
+  }
+  
+  .social-links a {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  
+  .footer p {
+    font-size: 0.8rem;
+  }
+}
