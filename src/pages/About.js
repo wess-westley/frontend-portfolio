@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from '../api/axios';
-import { FaDownload } from 'react-icons/fa';
+import { FaDownload, FaCloud, FaNetworkWired, FaCode, FaDatabase } from 'react-icons/fa';
 import "../styles/About.css";
 
 const About = () => {
   const [profilePicture, setProfilePicture] = useState('');
   const [cvUrl, setCvUrl] = useState('');
-  const [loading, setLoading] = useState({
-    picture: true,
-    cv: true
-  });
-  const [error, setError] = useState({
-    picture: null,
-    cv: null
-  });
+  const [loading, setLoading] = useState({ picture: true, cv: true });
+  const [error, setError] = useState({ picture: null, cv: null });
 
   const skills = [
-    { category: 'Cloud Engineering', level: 85 },
-    { category: 'Network Engineering', level: 75 },
-    { category: 'Full-Stack Development', level: 90 },
-    { category: 'Database Design', level: 80 },
+    { category: 'Cloud Engineering', level: 85, icon: <FaCloud /> },
+    { category: 'Network Engineering', level: 75, icon: <FaNetworkWired /> },
+    { category: 'Full-Stack Development', level: 90, icon: <FaCode /> },
+    { category: 'Database Design', level: 80, icon: <FaDatabase /> },
   ];
 
-  // Add your badges here
+  const softSkills = [
+    "Problem-Solving & Debugging",
+    "Leadership in Team Projects",
+    "Creative UI/UX Thinking",
+    "Effective Communication",
+    "Time Management & Discipline"
+  ];
+
   const badges = [
     {
       title: "Cisco Networking",
@@ -103,15 +104,16 @@ const About = () => {
             <div className="profile-content">
               <h2>About Me</h2>
               <p>
-                I'm a passionate software engineering student at Kirinyaga University with a strong focus 
-                on cloud computing and full-stack development. My journey in tech started with a curiosity 
-                about how things work, and it has grown into a deep love for creating solutions that make 
-                an impact.
+                I'm <strong>Westley Kanyora</strong>, a software engineering student at 
+                <strong> Kirinyaga University</strong> passionate about turning abstract ideas 
+                into real, impactful solutions. My journey started with curiosity about how 
+                computers "think," and today, I’m focused on <strong>cloud computing</strong>, 
+                <strong> full-stack development</strong>, and <strong>network engineering</strong>.
               </p>
               <p>
-                Currently, I'm training with AWS to enhance my cloud skills, and I enjoy applying what I 
-                learn to real-world projects. When I'm not studying or coding, you can find me skating 
-                or playing rollball, which helps me stay active and creative.
+                Beyond code, I’m a <strong>skater</strong> and <strong>rollball player</strong>, 
+                which keeps my creativity and discipline sharp. I believe that engineering is not 
+                just about solving problems—it’s about building experiences that matter.
               </p>
               
               <motion.button
@@ -136,36 +138,58 @@ const About = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/* Technical Skills Section */}
       <section className="skills">
         <div className="container">
-          <h2>My Skills</h2>
+          <h2>Technical Skills</h2>
           <div className="skills-grid">
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.category}
-                className="skill-bar-container"
+                className="skill-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <div className="skill-label">
-                  <span>{skill.category}</span>
+                <div className="skill-icon">{skill.icon}</div>
+                <h3>{skill.category}</h3>
+                <div className="progress-circle">
+                  <svg>
+                    <circle cx="50%" cy="50%" r="40"></circle>
+                    <motion.circle
+                      cx="50%" cy="50%" r="40"
+                      initial={{ strokeDasharray: "0 251" }}
+                      whileInView={{ strokeDasharray: `${(skill.level/100) * 251} 251` }}
+                      transition={{ duration: 1.2, ease: "easeOut" }}
+                      viewport={{ once: true }}
+                    />
+                  </svg>
                   <span>{skill.level}%</span>
-                </div>
-                <div className="skill-bar">
-                  <motion.div
-                    className="skill-progress"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1.2, ease: 'easeOut' }}
-                    viewport={{ once: true }}
-                  />
                 </div>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Soft Skills Section */}
+      <section className="soft-skills">
+        <div className="container">
+          <h2>Soft Skills</h2>
+          <ul>
+            {softSkills.map((skill, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                ✅ {skill}
+              </motion.li>
+            ))}
+          </ul>
         </div>
       </section>
 
