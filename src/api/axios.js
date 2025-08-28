@@ -3,7 +3,7 @@ import axios from 'axios';
 import { store } from '../redux/store'; // adjust path if store.js is elsewhere
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api',
+  baseURL:  "https://backend-in-django-4.onrender.com/api/",
 });
 
 // Add token if available
